@@ -3327,6 +3327,11 @@ static int vega10_apply_state_adjust_rules(struct pp_hwmgr *hwmgr,
 			disable_mclk_switching_for_vr ||
 			force_mclk_high;
 
+	if(disable_mclk_switching) {
+		printk(KERN_NOTICE "[vega10_hwmgr.c] disable_mclk_switching is active, forcing off\n");
+		disable_mclk_switching = 0;
+	}
+
 	sclk = vega10_ps->performance_levels[0].gfx_clock;
 	mclk = vega10_ps->performance_levels[0].mem_clock;
 
